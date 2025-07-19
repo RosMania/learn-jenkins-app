@@ -42,6 +42,7 @@ pipeline {
                             set +x
                             #test -f build/index.html
                             npm test
+                            set -x
                         '''
                     }
                     post {
