@@ -22,7 +22,6 @@ pipeline {
                     npm --version
                     npm ci
                     npm run build
-                    ls -la
                 '''
             }
         }
@@ -88,14 +87,6 @@ pipeline {
                     node_modules/.bin/netlify status
                     node_modules/.bin/netlify deploy --dir=build
                 '''
-            }
-        }
-
-        stage('Approval') {
-            steps {
-                timeout(time: 5, unit: 'MINUTES') {
-                    input cancel: 'No, I don\'t want.', message: 'Are you sure to deploy?', ok: 'Yes, go ahead.'
-                }
             }
         }
 
